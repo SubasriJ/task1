@@ -1,0 +1,51 @@
+<script >function validateform(){
+    var name=document.myform.name.value;
+    var password=document.myform.password.value;
+    var decimal=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,15}$/;
+    var secondpassword=document.myform.password2.value;
+    var x=document.myform.email.value;
+    const regex_pattern =      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (name==null||name==""){
+        alert("Name can't be blank");
+        return false;
+    }
+
+    else if(password.match(decimal)){
+        if(password==secondpassword){
+            if(regex_pattern.test(x)) {
+        
+               return true;
+             }
+            else{
+                 alert("Please enter a valid e-mail address ");
+                return false;
+             }
+
+         }
+        
+         
+        else{
+          alert("Password must be same!");
+           return false;
+         }
+        }
+    else{
+        alert("Password must be at least 6 characters long with atleast one uppercase,one lowercase,one digit and one special chracter");
+        return false;
+       }
+    
+
+}
+</script>
+<body>
+    <form name="myform" method="post" action="abc.js" onsubmit="return validateform()">
+    Name:<input type="text" name="name"><br/>
+    Password:<input type="password" name="password"><br/>
+    Re-enter Password:<input type="password" name="password2"><br/>
+    Email:<input type="text" name="email"><br/>
+<input type="submit" value="Register">
+
+
+</form>
+</body>
+
